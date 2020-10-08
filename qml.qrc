@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file alias="main.qml">src/qml/main.qml</file>
+		<file alias="vehicleselector.qml">src/qml/vehicleselector.qml</file>
+    </qresource>
+</RCC>
