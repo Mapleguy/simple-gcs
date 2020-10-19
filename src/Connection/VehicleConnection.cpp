@@ -4,3 +4,7 @@
 VehicleConnection::VehicleConnection() : QObject(nullptr) {
 
 }
+
+void VehicleConnection::DisconnectVehicle(){
+    qDebug() << "Default disconnect";
+}

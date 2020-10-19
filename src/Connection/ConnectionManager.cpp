@@ -1,5 +1,6 @@
 #include "ConnectionManager.h"
 #include "VehicleConnection.h"
+#include "UDPConnection.h"
 #include <QDebug>
 
 ConnectionManager::ConnectionManager() : QObject(nullptr) {
@@ -20,13 +21,15 @@ void ConnectionManager::connectVehicle(int type, QString address, QString port) 
 }
 
 void ConnectionManager::disconnectVehicle() {
+    _activeConnection->DisconnectVehicle();
+    _activeConnection = nullptr;
     qDebug() << "Disconnecting from vehicle";
 }
 
 void ConnectionManager::CreateConnection(int type, QString address, QString port) {
     switch(type){
         case 0:
-            qDebug() << "Connecting to vehicle type UDP at: " + address + ":" + port;
+            _activeConnection = new UDPConnection(address, port.toUInt());
             break;
         case 1:
             qDebug() << "Connecting to vehicle type TCP at: " + address + ":" + port;

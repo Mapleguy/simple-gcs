@@ -12,8 +12,8 @@ private:
 
 public:
     VehicleConnection();
-
     bool Connected() { return _connected; }
+    virtual void DisconnectVehicle();
 };
 
 #endif // VEHICLECONNECTION_H

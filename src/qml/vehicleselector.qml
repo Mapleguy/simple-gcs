@@ -15,12 +15,14 @@ Rectangle {
             id: connUrl
             Layout.alignment: Qt.AlignCenter
             placeholderText: qsTr("Connection URL")
+            text: qsTr("127.0.0.1")
         }
 
         TextField {
             id: connPort
             Layout.alignment: Qt.AlignCenter
             placeholderText: qsTr("Connection Port/Baud")
+            text: qsTr("14550")
         }
 
         ComboBox {
