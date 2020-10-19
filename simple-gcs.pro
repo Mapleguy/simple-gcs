@@ -1,4 +1,6 @@
 QT += quick
+QT += core
+QT += network
 
 CONFIG += c++11
 
@@ -6,14 +8,26 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+HEADERS += \
+        src/Connection/ConnectionManager.h \
+        src/Connection/VehicleConnection.h \
+        src/Connection/UDPConnection.h \
+        src/Connection/TCPConnection.h \
+        src/Connection/SerialConnection.h
+
 SOURCES += \
-        src/main.cpp
+        src/main.cpp \
+        src/Connection/VehicleConnection.cpp \
+        src/Connection/ConnectionManager.cpp \
+        src/Connection/UDPConnection.cpp \
+        src/Connection/TCPConnection.cpp \
+        src/Connection/SerialConnection.cpp
 
 RESOURCES += \
-		qml.qrc
+        qml.qrc \
 
 TRANSLATIONS += \
-    simple-gcs_en_US.ts
+        simple-gcs_en_US.ts
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =

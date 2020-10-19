@@ -17,25 +17,37 @@ Rectangle {
             placeholderText: qsTr("Connection URL")
         }
 
+        TextField {
+            id: connPort
+            Layout.alignment: Qt.AlignCenter
+            placeholderText: qsTr("Connection Port/Baud")
+        }
+
         ComboBox {
             id: connTypeDD
             Layout.alignment: Qt.AlignCenter
             model: ListModel {
                 id: connTypes
-                ListElement {text: "TCP"; color: "red"}
-                ListElement {text: "UDP"; color: "red"}
-                ListElement {text: "Serial"; color: "red"}
+                ListElement {text: "UDP"; color: "red";}
+                ListElement {text: "TCP"; color: "red";}
+                ListElement {text: "Serial"; color: "red";}
             }
         }
 
         Button {
             text: "Connect"
             Layout.alignment: Qt.AlignCenter
+            onClicked: {
+                ConnManager.connectVehicle(connTypeDD.currentIndex, connUrl.text, connPort.text);
+            }
         }
 
         Button {
             text: "Disconnect"
             Layout.alignment: Qt.AlignCenter
+            onClicked: {
+                ConnManager.disconnectVehicle();
+            }
         }
     }
 }
