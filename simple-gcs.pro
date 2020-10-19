@@ -13,15 +13,19 @@ HEADERS += \
         src/Connection/VehicleConnection.h \
         src/Connection/UDPConnection.h \
         src/Connection/TCPConnection.h \
-        src/Connection/SerialConnection.h
+        src/Connection/SerialConnection.h \
+        src/Mavlink/mavlinkhandler.h
 
 SOURCES += \
+        src/Mavlink/mavlinkhandler.cpp \
         src/main.cpp \
         src/Connection/VehicleConnection.cpp \
         src/Connection/ConnectionManager.cpp \
         src/Connection/UDPConnection.cpp \
         src/Connection/TCPConnection.cpp \
         src/Connection/SerialConnection.cpp
+		
+INCLUDEPATH += libs/mavlink
 
 RESOURCES += \
         qml.qrc \

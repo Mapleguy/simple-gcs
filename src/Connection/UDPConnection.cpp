@@ -1,4 +1,5 @@
 #include "UDPConnection.h"
+#include "src/Mavlink/mavlinkhandler.h"
 #include <QUdpSocket>
 #include <QDebug>
 
@@ -16,12 +17,9 @@ void UDPConnection::ReadDGram(){
         datagram.resize(socket->pendingDatagramSize());
         QHostAddress sndAddr;
         quint16 sndPort;
-
         socket->readDatagram(datagram.data(), datagram.size(), &sndAddr, &sndPort);
-
         buffer.append(datagram);
-
-        qDebug() << "Read Datagram";
+        Ingest(buffer);
     }
 }
 
