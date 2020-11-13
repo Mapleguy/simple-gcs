@@ -1,6 +1,7 @@
 QT += quick
 QT += core
 QT += network
+QT += serialport
 
 CONFIG += c++11
 

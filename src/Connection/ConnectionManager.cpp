@@ -1,5 +1,7 @@
 #include "ConnectionManager.h"
 #include "VehicleConnection.h"
+#include "SerialConnection.h"
+#include "TCPConnection.h"
 #include "UDPConnection.h"
 #include <QDebug>
 
@@ -35,6 +37,7 @@ void ConnectionManager::CreateConnection(int type, QString address, QString port
             qDebug() << "Connecting to vehicle type TCP at: " + address + ":" + port;
             break;
         case 2:
+            _activeConnection = new SerialConnection(address, port.toUInt());
             qDebug() << "Connecting to vehicle type Serial at: " + address + ":" + port;
             break;
         default:
