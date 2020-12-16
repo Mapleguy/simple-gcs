@@ -13,6 +13,10 @@ SerialConnection::SerialConnection(QString address, uint16_t baud) {
     }else{
         qDebug() << "Opened Serial";
         QObject::connect(_serial, &QIODevice::readyRead, this, &SerialConnection::ReadSerial);
+
+        //TEST FOR REQUESTING PARAMS
+        QByteArray pRequest = RequestParameters();
+        WriteSerial(pRequest);
     }
 }
 
@@ -27,6 +31,14 @@ void SerialConnection::ReadSerial(){
         }
     } else {
         qDebug() << "Serial port not readable";
+    }
+}
+
+void SerialConnection::WriteSerial(QByteArray bytes){
+    if (_serial && _serial->isOpen()) {
+        _serial->write(bytes);
+    } else {
+        qDebug() << "Serial port not writeable";
     }
 }
 

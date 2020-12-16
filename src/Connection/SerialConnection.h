@@ -16,6 +16,7 @@ public:
 
 private:
     void ReadSerial();
+    void WriteSerial(QByteArray bytes);
 
 public:
     void DisconnectVehicle() override;

@@ -5,6 +5,7 @@ class QByteArray;
 
 void Ingest(QByteArray data);
 void HandleMavlink();
+QByteArray RequestParameters();
 
 
 #endif // MAVLINKHANDLER_H

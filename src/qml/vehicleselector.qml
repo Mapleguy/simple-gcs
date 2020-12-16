@@ -34,6 +34,25 @@ Rectangle {
                 ListElement {text: "TCP"; color: "red";}
                 ListElement {text: "Serial"; color: "red";}
             }
+            onCurrentIndexChanged: {
+                //Update default values in the URL and Port fields
+                switch(connTypes.get(currentIndex).text) {
+                    case "UDP":
+                        connUrl.text = qsTr("127.0.0.1")
+                        connPort.text = qsTr("14550")
+                        break
+                    case "TCP":
+                        connUrl.text = qsTr("127.0.0.1")
+                        connPort.text = qsTr("5760")
+                        break
+                    case "Serial":
+                        connUrl.text = qsTr("COM4")
+                        connPort.text = qsTr("57600")
+                        break
+                    default:
+                        break
+                }
+            }
         }
 
         Button {

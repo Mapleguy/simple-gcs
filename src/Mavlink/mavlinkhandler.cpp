@@ -13,10 +13,8 @@ void HandleMavlink(mavlink_message_t msg){
         case MAVLINK_MSG_ID_SYSTEM_TIME:
             break;
 
-        case MAVLINK_MSG_ID_PARAM_REQUEST_READ:
-            break;
-
-        case MAVLINK_MSG_ID_PARAM_EXT_REQUEST_LIST:
+        case MAVLINK_MSG_ID_PARAM_VALUE:
+            qDebug() << "PARAM";
             break;
 
         case MAVLINK_MSG_ID_ATTITUDE:
@@ -36,7 +34,6 @@ void HandleMavlink(mavlink_message_t msg){
     }
 }
 
-
 void Ingest(QByteArray data){
     for(int i = 0; i < data.size(); i++){
         mavlink_message_t msg;
@@ -45,4 +42,17 @@ void Ingest(QByteArray data){
             HandleMavlink(msg);
         }
     }
+}
+
+//Request param list
+QByteArray RequestParameters(){
+    qDebug() << "Params?";
+    //MAVLINK_MSG_ID_PARAM_REQUEST_LIST
+    mavlink_message_t msg;
+    mavlink_msg_param_request_list_pack(255, 0, &msg, 1, 0);
+
+    uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
+    int len = mavlink_msg_to_send_buffer(buffer, &msg);
+
+    return QByteArray((const char*)buffer, len);
 }
